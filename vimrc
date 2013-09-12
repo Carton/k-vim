@@ -19,7 +19,72 @@
 " General 基础设置
 "==========================================
 
-"set guifont=Monaco:h20          " 字体 && 字号
+"set guifont=DejaVu\ Sans\ Mono\ 11
+set guifont=Monaco:h20          " 字体 && 字号
+" set the default shell
+set shell=/bin/bash
+
+" set autocorrect abbreviations
+iab teh the
+iab fro for
+iab adn and
+
+" Cindent?
+"set cinoptions=>s,e0,n0,f0,{0,}0,^0,:s,=s,l0,gs,hs,ps,ts,+s,c3,C0,(2s,us,\U0,w0,m0,j0,)20,*30
+"set indentkeys+=*<CR>
+"set cinkeys+=*<CR>
+"set cindent
+
+" Redefine pastetoggle key
+" This will cause Enter key (C-M) to response slow
+" in insert mode
+" set pastetoggle=<C-M>p
+nnoremap <C-M>p :set invpaste<CR>
+
+" our key bindings
+" inoremap <C-d><C-s> <Esc>:w<CR>i
+" inoremap <C-d><C-n> <Esc>:w<CR>:bn<CR>i
+" inoremap <C-d><C-p> <Esc>:w<CR>:bp<CR>i
+" noremap <C-d><C-a> <Esc>ggVG
+" inoremap <C-d><C-v> <Esc>"+gPi
+" vnoremap <C-d><C-c> "+y
+" vnoremap <C-d><C-x> "+x
+" noremap <C-d><C-w> <Esc>:bd<CR>
+
+" CTRL-D is Save current buffer
+noremap <C-D> :bd<CR>
+inoremap <C-D> <C-O>:bd<CR>
+cnoremap <C-D> <C-C>:bd<CR>
+onoremap <C-D> <C-C>:bd<CR>
+
+" CTRL-E is Save current buffer
+noremap <C-E> :w<CR>
+inoremap <C-E> <C-O>:w<CR>
+cnoremap <C-E> <C-C>:w<CR>
+onoremap <C-E> <C-C>:w<CR>
+
+" CTRL-X is Close window
+noremap <C-X> :q<CR>
+inoremap <C-X> <C-O>:q<CR>
+cnoremap <C-X> <C-C>:q<CR>
+onoremap <C-X> <C-C>:q<CR>
+
+" CTRL-P is switch to Previous window
+noremap <C-P> :bp<CR>
+inoremap <C-P> <C-O>:bp<CR>
+cnoremap <C-P> <C-C>:bp<CR>
+onoremap <C-P> <C-C>:bp<CR>
+
+" CTRL-U is switch to Next window
+noremap <C-U> :bn<CR>
+inoremap <C-U> <C-O>:bn<CR>
+cnoremap <C-U> <C-C>:bn<CR>
+onoremap <C-U> <C-C>:bn<CR>
+
+command W :execute ':silent w !sudo tee % > /dev/null' | :edit!
+
+" Todo:
+" GoDefinition
 
 " history存储长度。
 set history=2000
@@ -44,6 +109,7 @@ set shortmess=atI       " 启动的时候不显示那个援助索马里儿童的
 "set backupdir=~/bak/vimbk/
 
 " 取消备份。 视情况自己改
+set nowritebackup
 set nobackup
 set noswapfile
 
@@ -75,7 +141,7 @@ set tm=500
 "==========================================
 
 "显示行号：
-set number
+"set number
 set nowrap                    " 取消换行。
 
 "括号配对情况
@@ -150,7 +216,7 @@ if v:version >= 730
     set undodir=~/bak/vimundo/
 endif
 
-set wildignore=*.swp,*.bak,*.pyc,*.class
+set wildignore=*.swp,*.bak,*.pyc,*.class,*/tmp/*,*.so,*.swp,*.zip,*.o,*~
 
 "显示当前的行号列号：
 set ruler
@@ -218,7 +284,6 @@ inoremap <expr> <PageUp>   pumvisible() ? "\<PageUp>\<C-p>\<C-n>" : "\<PageUp>"
 " 增强模式中的命令行自动完成操作
 set wildmenu
 " Ignore compiled files
-set wildignore=*.o,*~,*.pyc,*.class
 
 " Python 文件的一般设置，比如不要 tab 等
 autocmd FileType python set tabstop=4 shiftwidth=4 expandtab ai
@@ -447,7 +512,7 @@ let g:tagbar_autofocus = 1
 
 "标签导航 要装ctags
 Bundle 'vim-scripts/taglist.vim'
-set tags=tags;/
+set tags=./tags,./TAGS,tags,TAGS,/usr/include/tags,/usr/src/linux/tags
 let Tlist_Ctags_Cmd="/usr/bin/ctags"
 nnoremap <silent> <F8> :TlistToggle<CR>
 let Tlist_Auto_Highlight_Tag = 1
@@ -478,7 +543,6 @@ Bundle 'kien/ctrlp.vim'
 let g:ctrlp_map = '<leader>p'
 let g:ctrlp_cmd = 'CtrlP'
 map <leader>f :CtrlPMRU<CR>
-"set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux"
 let g:ctrlp_custom_ignore = {
     \ 'dir':  '\v[\/]\.(git|hg|svn|rvm)$',
     \ 'file': '\v\.(exe|so|dll|zip|tar|tar.gz)$',
