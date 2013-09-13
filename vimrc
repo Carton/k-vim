@@ -190,14 +190,29 @@ au FocusGained * :set relativenumber
 " 插入模式下用绝对行号, 普通模式下用相对
 autocmd InsertEnter * :set number
 autocmd InsertLeave * :set relativenumber
-function! NumberToggle()
+function! RelativeToggle()
   if(&relativenumber == 1)
     set number
   else
     set relativenumber
   endif
 endfunc
-"nnoremap <C-n> :call NumberToggle()<cr>
+
+function! NumberToggle()
+  if (&number == 1)
+    set nonumber
+  elseif (&relativenumber == 1)
+    set norelativenumber
+  else
+    set relativenumber
+  endif
+
+  " if(&number == 1 or &relativenumber == 1)
+  "   set number
+  " else
+  "   set nonumber
+  " endif
+endfunc
 
 "create undo file
 set undolevels=1000         " How many undos
@@ -310,8 +325,8 @@ let mapleader = ','
 let g:mapleader = ','
 
 " Quickly edit/reload the vimrc file
-nmap <silent> <leader>ev :e $MYVIMRC<CR>
-nmap <silent> <leader>sv :so $MYVIMRC<CR>
+" nmap <silent> <leader>ev :e $MYVIMRC<CR>
+" nmap <silent> <leader>sv :so $MYVIMRC<CR>
 
 "强迫自己用 hjkl
 map <Left> <Nop>
@@ -361,6 +376,10 @@ au InsertLeave * set nopaste
 
 map Y y$
 noremap <silent><leader>/ :nohls<CR>
+
+"Line number toggle
+nnoremap <leader>n :call RelativeToggle()<cr>
+nnoremap <leader>N :call NumberToggle()<CR>
 
 inoremap kj <Esc>
 " I can type :help on my own, thanks.
@@ -457,7 +476,7 @@ Bundle 'gmarik/vundle'
 "################### 导航 ###################"
 "目录导航
 Bundle 'scrooloose/nerdtree'
-map <leader>n :NERDTreeToggle<CR>
+map <leader>d :NERDTreeToggle<CR>
 let NERDTreeHighlightCursorline=1
 let NERDTreeIgnore=[ '\.pyc$', '\.pyo$', '\.obj$', '\.o$', '\.so$', '\.egg$', '^\.git$', '^\.svn$', '^\.hg$' ]
 let g:netrw_home='~/bak'
@@ -477,9 +496,9 @@ let g:miniBufExplCycleArround=1
 
 " 默认方向键左右可以切换buffer
 nnoremap <TAB> :MBEbn<CR>
-noremap <leader>bn :MBEbn<CR>
-noremap <leader>bp :MBEbp<CR>
-noremap <leader>bd :MBEbd<CR>
+" noremap <leader>bn :MBEbn<CR>
+" noremap <leader>bp :MBEbp<CR>
+" noremap <leader>bd :MBEbd<CR>
 
 "标签导航
 Bundle 'majutsushi/tagbar'
@@ -519,6 +538,7 @@ Bundle 'kien/ctrlp.vim'
 let g:ctrlp_map = '<leader>p'
 let g:ctrlp_cmd = 'CtrlP'
 map <leader>f :CtrlPMRU<CR>
+nmap <leader>b :CtrlPBuffer<CR>
 let g:ctrlp_custom_ignore = {
     \ 'dir':  '\v[\/]\.(git|hg|svn|rvm)$',
     \ 'file': '\v\.(exe|so|dll|zip|tar|tar.gz)$',
