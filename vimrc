@@ -19,11 +19,6 @@
 " General 基础设置
 "==========================================
 
-"set guifont=DejaVu\ Sans\ Mono\ 11
-set guifont=Monaco:h20          " 字体 && 字号
-" set the default shell
-set shell=/bin/bash
-
 " set autocorrect abbreviations
 iab teh the
 iab fro for
@@ -584,9 +579,9 @@ map <leader><space> :FixWhitespace<cr>
 "主题 solarized
 "Bundle 'altercation/vim-colors-solarized'
 "let g:solarized_termcolors=256
-let g:solarized_termtrans=1
-let g:solarized_contrast="normal"
-let g:solarized_visibility="normal"
+"let g:solarized_termtrans=1
+"let g:solarized_contrast="normal"
+"let g:solarized_visibility="normal"
 
 "主题 molokai
 "Bundle 'tomasr/molokai'
@@ -644,13 +639,13 @@ map = <Plug>(expand_region_expand)
 map - <Plug>(expand_region_shrink)
 
 "for mutil cursor
-Bundle 'terryma/vim-multiple-cursors'
-let g:multi_cursor_use_default_mapping=0
-" Default mapping
-let g:multi_cursor_next_key='<C-m>'
-let g:multi_cursor_prev_key='<C-p>'
-let g:multi_cursor_skip_key='<C-x>'
-let g:multi_cursor_quit_key='<Esc>'
+"Bundle 'terryma/vim-multiple-cursors'
+"let g:multi_cursor_use_default_mapping=0
+"" Default mapping
+"let g:multi_cursor_next_key='<C-m>'
+"let g:multi_cursor_prev_key='<C-p>'
+"let g:multi_cursor_skip_key='<C-x>'
+"let g:multi_cursor_quit_key='<Esc>'
 
 
 "################# 语法检查 ###############
@@ -701,8 +696,8 @@ Bundle 'thiderman/nginx-vim-syntax'
 
 "################### 其他 ###################"
 " task list
-Bundle 'vim-scripts/TaskList.vim'
-map <leader>td <Plug>TaskList
+"Bundle 'vim-scripts/TaskList.vim'
+"map <leader>td <Plug>TaskList
 
 " for git 尚未用起来
 Bundle 'tpope/vim-fugitive'
