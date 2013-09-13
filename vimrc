@@ -41,35 +41,35 @@ iab adn and
 " set pastetoggle=<C-M>p
 nnoremap <C-M>p :set invpaste<CR>
 
-" CTRL-D is Save current buffer
+" Delete current buffer
 noremap <C-D> :bd<CR>
 inoremap <C-D> <C-O>:bd<CR>
 cnoremap <C-D> <C-C>:bd<CR>
 onoremap <C-D> <C-C>:bd<CR>
 
-" CTRL-E is Save current buffer
+" Save current buffer
 noremap <C-E> :w<CR>
 inoremap <C-E> <C-O>:w<CR>
 cnoremap <C-E> <C-C>:w<CR>
 onoremap <C-E> <C-C>:w<CR>
 
-" CTRL-X is Close window
+" Close window
 noremap <C-X> :q<CR>
 inoremap <C-X> <C-O>:q<CR>
 cnoremap <C-X> <C-C>:q<CR>
 onoremap <C-X> <C-C>:q<CR>
 
-" CTRL-P is switch to Previous window
-noremap <C-P> :bp<CR>
-inoremap <C-P> <C-O>:bp<CR>
-cnoremap <C-P> <C-C>:bp<CR>
-onoremap <C-P> <C-C>:bp<CR>
+" CTRL-P is switch to Next window, P is on the right
+noremap <C-P> :bn<CR>
+inoremap <C-P> <C-O>:bn<CR>
+cnoremap <C-P> <C-C>:bn<CR>
+onoremap <C-P> <C-C>:bn<CR>
 
-" CTRL-U is switch to Next window
-noremap <C-U> :bn<CR>
-inoremap <C-U> <C-O>:bn<CR>
-cnoremap <C-U> <C-C>:bn<CR>
-onoremap <C-U> <C-C>:bn<CR>
+" CTRL-U is switch to Previous windowa, U is on the left
+noremap <C-U> :bp<CR>
+inoremap <C-U> <C-O>:bp<CR>
+cnoremap <C-U> <C-C>:bp<CR>
+onoremap <C-U> <C-C>:bp<CR>
 
 " Sudo and write to file
 command W :execute ':silent w !sudo tee % > /dev/null' | :edit!
@@ -265,12 +265,12 @@ autocmd! bufwritepost .vimrc source % " vimrc文件修改之后自动加载。 l
 "让Vim的补全菜单行为与一般IDE一致(参考VimTip1228)
 "set completeopt+=longest
 set completeopt=longest,menu
- 
+
 "离开插入模式后自动关闭预览窗口
 autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 "回车即选中当前项
 inoremap <expr> <CR>       pumvisible() ? "\<C-y>" : "\<CR>"
- 
+
 "上下左右键的行为 会显示其他信息
 inoremap <expr> <Down>     pumvisible() ? "\<C-n>" : "\<Down>"
 inoremap <expr> <Up>       pumvisible() ? "\<C-p>" : "\<Up>"
@@ -362,17 +362,9 @@ map 0 ^
 " disbale paste mode when leaving insert mode
 au InsertLeave * set nopaste
 
-nnoremap <F6> :exec exists('syntax_on') ? 'syn off' : 'syn on'<CR>
-
-
-" Map <Space> to / (search) and Ctrl-<Space> to ? (backwards search)
-map <space> /
-"map <c-space> ?"
+"nnoremap <F6> :exec exists('syntax_on') ? 'syn off' : 'syn on'<CR>
 
 map Y y$
-"cmap w!! %!sudo tee > /dev/null %
-" w!! to sudo & write a file
-cmap w!! w !sudo tee >/dev/null %
 noremap <silent><leader>/ :nohls<CR>
 
 inoremap kj <Esc>
@@ -410,7 +402,7 @@ nmap T O<ESC>j
 "inoremap <C-k> <Esc>:m-2<CR>
 
 " Quickly close the current window
-nnoremap <leader>q :q<CR>
+"nnoremap <leader>q :q<CR>
 
 " Swap implementations of ` and ' jump to markers
 " By default, ' jumps to the marked line, ` jumps to the marked line and
@@ -422,9 +414,6 @@ nnoremap ` '
 " yanked stack (also, in visual mode)
 "nnoremap <silent> <leader>d "_d
 "vnoremap <silent> <leader>d "_d
-
-" remap U to <C-r> for easier redo
-nnoremap U <C-r>
 
 "au VimResized * exe "normal! \<c-w>=""
 
