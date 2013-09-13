@@ -41,16 +41,6 @@ iab adn and
 " set pastetoggle=<C-M>p
 nnoremap <C-M>p :set invpaste<CR>
 
-" our key bindings
-" inoremap <C-d><C-s> <Esc>:w<CR>i
-" inoremap <C-d><C-n> <Esc>:w<CR>:bn<CR>i
-" inoremap <C-d><C-p> <Esc>:w<CR>:bp<CR>i
-" noremap <C-d><C-a> <Esc>ggVG
-" inoremap <C-d><C-v> <Esc>"+gPi
-" vnoremap <C-d><C-c> "+y
-" vnoremap <C-d><C-x> "+x
-" noremap <C-d><C-w> <Esc>:bd<CR>
-
 " CTRL-D is Save current buffer
 noremap <C-D> :bd<CR>
 inoremap <C-D> <C-O>:bd<CR>
@@ -81,7 +71,13 @@ inoremap <C-U> <C-O>:bn<CR>
 cnoremap <C-U> <C-C>:bn<CR>
 onoremap <C-U> <C-C>:bn<CR>
 
+" Sudo and write to file
 command W :execute ':silent w !sudo tee % > /dev/null' | :edit!
+" For all text files set 'textwidth' to 80 characters.
+autocmd FileType text,tex,docbk setlocal textwidth=80
+
+" Auto change to working directory
+autocmd BufEnter * cd %:p:h
 
 " Todo:
 " GoDefinition
@@ -141,7 +137,7 @@ set tm=500
 "==========================================
 
 "显示行号：
-"set number
+set number
 set nowrap                    " 取消换行。
 
 "括号配对情况
@@ -206,7 +202,7 @@ function! NumberToggle()
     set relativenumber
   endif
 endfunc
-nnoremap <C-n> :call NumberToggle()<cr>
+"nnoremap <C-n> :call NumberToggle()<cr>
 
 "create undo file
 set undolevels=1000         " How many undos
@@ -336,8 +332,6 @@ map k gk
 " better command line editing
 cnoremap <C-j> <t_kd>
 cnoremap <C-k> <t_ku>
-cnoremap <C-a> <Home>
-cnoremap <C-e> <End>
 
 "Smart way to move between windows 分屏窗口移动
 map <C-j> <C-W>j
@@ -353,15 +347,15 @@ noremap L $
 map 0 ^
 
 " Speed up scrolling of the viewport slightly
-nnoremap <C-e> 2<C-e>
-nnoremap <C-y> 2<C-y>
+"nnoremap <C-e> 2<C-e>
+"nnoremap <C-y> 2<C-y>
 
 ""为方便复制，用<F2>开启/关闭行号显示:
-nnoremap <F2> :set nonumber! number?<CR>
-nnoremap <F3> :set list! list?<CR>
-nnoremap <F4> :set wrap! wrap?<CR>
-              "set paste
-set pastetoggle=<F5>            " when in insert mode, press <F2> to go to
+"nnoremap <F2> :set nonumber! number?<CR>
+"nnoremap <F3> :set list! list?<CR>
+"nnoremap <F4> :set wrap! wrap?<CR>
+"              "set paste
+"set pastetoggle=<F5>            " when in insert mode, press <F2> to go to
                                 "    paste mode, where you can paste mass data
                                 "    that won't be autoindented
 
@@ -599,14 +593,14 @@ map <leader><space> :FixWhitespace<cr>
 
 
 "主题 solarized
-Bundle 'altercation/vim-colors-solarized'
+"Bundle 'altercation/vim-colors-solarized'
 "let g:solarized_termcolors=256
 let g:solarized_termtrans=1
 let g:solarized_contrast="normal"
 let g:solarized_visibility="normal"
 
 "主题 molokai
-Bundle 'tomasr/molokai'
+"Bundle 'tomasr/molokai'
 "let g:molokai_original = 1
 
 "################### 快速移动 ###################"
@@ -619,7 +613,7 @@ Bundle 'vim-scripts/matchit.zip'
 "################### 补全及快速编辑 ###################"
 
 "迄今位置用到的最好的自动VIM自动补全插件
-Bundle 'Valloric/YouCompleteMe'
+"Bundle 'Valloric/YouCompleteMe'
 "youcompleteme  默认tab  s-tab 和自动补全冲突
 "let g:ycm_key_list_select_completion=['<c-n>']
 let g:ycm_key_list_select_completion = ['<Down>']
@@ -756,12 +750,12 @@ endif
 
 
 " 修改主题和颜色展示
-colorscheme solarized
+colorscheme desert
 set background=dark
 set t_Co=256
 
 "colorscheme molokai
-"colorscheme desert
+"colorscheme solarized
 
 "设置标记一列的背景颜色和数字一行颜色一致
 hi! link SignColumn   LineNr
