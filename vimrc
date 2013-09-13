@@ -105,8 +105,8 @@ set nobackup
 set noswapfile
 
 " 突出显示当前行等 不喜欢这种定位可注解
-set cursorcolumn
-set cursorline              " 突出显示当前行
+"set cursorcolumn
+"set cursorline              " 突出显示当前行
 
 "设置 退出vim后，内容显示在终端屏幕, 可以用于查看和复制
 "好处：误删什么的，如果以前屏幕打开，可以找回
@@ -368,8 +368,6 @@ noremap <F1> <Esc>"
 
 nnoremap ; :
 
-nnoremap <leader>v V`}
-
 "Use sane regexes"
 nnoremap / /\v
 vnoremap / /\v
@@ -577,11 +575,11 @@ map <leader><space> :FixWhitespace<cr>
 
 
 "主题 solarized
-"Bundle 'altercation/vim-colors-solarized'
-"let g:solarized_termcolors=256
-"let g:solarized_termtrans=1
-"let g:solarized_contrast="normal"
-"let g:solarized_visibility="normal"
+Bundle 'altercation/vim-colors-solarized'
+let g:solarized_termcolors=256
+let g:solarized_termtrans=1
+let g:solarized_contrast="normal"
+let g:solarized_visibility="normal"
 
 "主题 molokai
 "Bundle 'tomasr/molokai'
@@ -606,7 +604,7 @@ let g:ycm_key_list_previous_completion = ['<Up>']
 
 
 "快速插入代码片段
-"Bundle 'vim-scripts/UltiSnips'
+Bundle 'vim-scripts/UltiSnips'
 Bundle 'SirVer/ultisnips'
 let g:UltiSnipsExpandTrigger = "<tab>"
 let g:UltiSnipsJumpForwardTrigger = "<tab>"
@@ -614,7 +612,7 @@ let g:UltiSnipsJumpForwardTrigger = "<tab>"
 let g:UltiSnipsSnippetDirectories=["snippets", "bundle/UltiSnips/UltiSnips"]
 
 "快速 加减注释
-Bundle 'scrooloose/nerdcommenter'
+Bundle 'tpope/vim-commentary'
 
 " 快速加入修改环绕字符
 Bundle 'tpope/vim-surround'
@@ -639,13 +637,13 @@ map = <Plug>(expand_region_expand)
 map - <Plug>(expand_region_shrink)
 
 "for mutil cursor
-"Bundle 'terryma/vim-multiple-cursors'
-"let g:multi_cursor_use_default_mapping=0
-"" Default mapping
-"let g:multi_cursor_next_key='<C-m>'
-"let g:multi_cursor_prev_key='<C-p>'
-"let g:multi_cursor_skip_key='<C-x>'
-"let g:multi_cursor_quit_key='<Esc>'
+Bundle 'terryma/vim-multiple-cursors'
+let g:multi_cursor_use_default_mapping=0
+" Default mapping
+let g:multi_cursor_next_key='<C-m>'
+let g:multi_cursor_prev_key='<C-p>'
+let g:multi_cursor_skip_key='<C-x>'
+let g:multi_cursor_quit_key='<Esc>'
 
 
 "################# 语法检查 ###############
@@ -734,12 +732,12 @@ endif
 
 
 " 修改主题和颜色展示
-colorscheme desert
+"colorscheme desert
+colorscheme solarized
 set background=dark
 set t_Co=256
 
 "colorscheme molokai
-"colorscheme solarized
 
 "设置标记一列的背景颜色和数字一行颜色一致
 hi! link SignColumn   LineNr
