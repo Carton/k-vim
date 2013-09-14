@@ -30,12 +30,6 @@ iab adn and
 "set cinkeys+=*<CR>
 "set cindent
 
-" Redefine pastetoggle key
-" This will cause Enter key (C-M) to response slow
-" in insert mode
-" set pastetoggle=<C-M>p
-nnoremap <C-M>p :set invpaste<CR>
-
 " Delete current buffer
 noremap <C-D> :bd<CR>
 inoremap <C-D> <C-O>:bd<CR>
@@ -68,8 +62,20 @@ onoremap <C-U> <C-C>:bp<CR>
 
 " Sudo and write to file
 command W :execute ':silent w !sudo tee % > /dev/null' | :edit!
+
 " For all text files set 'textwidth' to 80 characters.
 autocmd FileType text,tex,docbk setlocal textwidth=80
+
+function! GoDefinition()
+    let pos = getpos(".")
+    normal! gd
+    if getpos(".") == pos
+        exe "tag " . expand("<cword>")
+    endif
+endfunction
+
+" Jump to definition
+autocmd FileType c,cpp,java,python,perl nnoremap <C-]> :call GoDefinition()<CR>
 
 " Auto change to working directory
 autocmd BufEnter * cd %:p:h
@@ -375,7 +381,11 @@ au InsertLeave * set nopaste
 "nnoremap <F6> :exec exists('syntax_on') ? 'syn off' : 'syn on'<CR>
 
 map Y y$
+" Cancel search highlight key
 noremap <silent><leader>/ :nohls<CR>
+
+" Redefine pastetoggle key
+nnoremap <leader>p :set invpaste<CR>
 
 "Line number toggle
 nnoremap <leader>n :call RelativeToggle()<cr>
@@ -440,16 +450,16 @@ au BufWritePost .vimrc so ~/.vimrc
 "" " Close all the buffers
 "map <leader>ba :1,1000 bd!<cr>
 
-map <leader>tn :tabnew<cr>
-map <leader>to :tabonly<cr>
-map <leader>tc :tabclose<cr>
-map <leader>tm :tabmove
+" map <leader>tn :tabnew<cr>
+" map <leader>to :tabonly<cr>
+" map <leader>tc :tabclose<cr>
+" map <leader>tm :tabmove
 
 " tabnext  tabpreviouse
 
 " Opens a new tab with the current buffer's path
 " Super useful when editing files in the same directory
-map <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
+" map <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
 
 "==========================================
 " bundle 插件管理和配置项
@@ -502,40 +512,40 @@ nnoremap <TAB> :MBEbn<CR>
 
 "标签导航
 Bundle 'majutsushi/tagbar'
-nmap <F9> :TagbarToggle<CR>
+nmap <leader>t :TagbarToggle<CR>
 let g:tagbar_autofocus = 1
 
 "标签导航 要装ctags
-Bundle 'vim-scripts/taglist.vim'
-set tags=./tags,./TAGS,tags,TAGS,/usr/include/tags,/usr/src/linux/tags
-let Tlist_Ctags_Cmd="/usr/bin/ctags"
-nnoremap <silent> <F8> :TlistToggle<CR>
-let Tlist_Auto_Highlight_Tag = 1
-let Tlist_Auto_Open = 0
-let Tlist_Auto_Update = 1
-let Tlist_Close_On_Select = 0
-let Tlist_Compact_Format = 0
-let Tlist_Display_Prototype = 0
-let Tlist_Display_Tag_Scope = 1
-let Tlist_Enable_Fold_Column = 0
-let Tlist_Exit_OnlyWindow = 1
-let Tlist_File_Fold_Auto_Close = 0
-let Tlist_GainFocus_On_ToggleOpen = 1
-let Tlist_Hightlight_Tag_On_BufEnter = 1
-let Tlist_Inc_Winwidth = 0
-let Tlist_Max_Submenu_Items = 1
-let Tlist_Max_Tag_Length = 30
-let Tlist_Process_File_Always = 0
-let Tlist_Show_Menu = 0
-let Tlist_Show_One_File = 1
-let Tlist_Sort_Type = "order"
-let Tlist_Use_Horiz_Window = 0
-let Tlist_Use_Right_Window = 0
-let Tlist_WinWidth = 25
+" Bundle 'vim-scripts/taglist.vim'
+" set tags=./tags,./TAGS,tags,TAGS,/usr/include/tags,/usr/src/linux/tags
+" let Tlist_Ctags_Cmd="/usr/bin/ctags"
+" nnoremap <silent> <F8> :TlistToggle<CR>
+" let Tlist_Auto_Highlight_Tag = 1
+" let Tlist_Auto_Open = 0
+" let Tlist_Auto_Update = 1
+" let Tlist_Close_On_Select = 0
+" let Tlist_Compact_Format = 0
+" let Tlist_Display_Prototype = 0
+" let Tlist_Display_Tag_Scope = 1
+" let Tlist_Enable_Fold_Column = 0
+" let Tlist_Exit_OnlyWindow = 1
+" let Tlist_File_Fold_Auto_Close = 0
+" let Tlist_GainFocus_On_ToggleOpen = 1
+" let Tlist_Hightlight_Tag_On_BufEnter = 1
+" let Tlist_Inc_Winwidth = 0
+" let Tlist_Max_Submenu_Items = 1
+" let Tlist_Max_Tag_Length = 30
+" let Tlist_Process_File_Always = 0
+" let Tlist_Show_Menu = 0
+" let Tlist_Show_One_File = 1
+" let Tlist_Sort_Type = "order"
+" let Tlist_Use_Horiz_Window = 0
+" let Tlist_Use_Right_Window = 0
+" let Tlist_WinWidth = 25
 
 "for file search ctrlp, 文件搜索
 Bundle 'kien/ctrlp.vim'
-let g:ctrlp_map = '<leader>p'
+let g:ctrlp_map = '<leader>o'
 let g:ctrlp_cmd = 'CtrlP'
 map <leader>f :CtrlPMRU<CR>
 nmap <leader>b :CtrlPBuffer<CR>
