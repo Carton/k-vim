@@ -680,14 +680,14 @@ let g:multi_cursor_quit_key='<Esc>'
 
 " 编辑时自动语法检查标红, vim-flake8目前还不支持,所以多装一个
 " 使用pyflakes,速度比pylint快
-Bundle 'scrooloose/syntastic'
-let g:syntastic_error_symbol='>>'
-let g:syntastic_warning_symbol='>'
-let g:syntastic_check_on_open=1
-let g:syntastic_enable_highlighting = 0
-"let g:syntastic_python_checker="flake8,pyflakes,pep8,pylint"
-let g:syntastic_python_checkers=['pyflakes']
-highlight SyntasticErrorSign guifg=white guibg=black
+" Bundle 'scrooloose/syntastic'
+" let g:syntastic_error_symbol='>>'
+" let g:syntastic_warning_symbol='>'
+" let g:syntastic_check_on_open=1
+" let g:syntastic_enable_highlighting = 0
+" "let g:syntastic_python_checker="flake8,pyflakes,pep8,pylint"
+" let g:syntastic_python_checkers=['pyflakes']
+" highlight SyntasticErrorSign guifg=white guibg=black
 
 " python fly check, 弥补syntastic只能打开和保存才检查语法的不足
 Bundle 'kevinw/pyflakes-vim'
@@ -737,6 +737,12 @@ nnoremap <leader>h :GundoToggle<CR>
 " end turn on
 filetype plugin indent on
 
+" Carton added
+Bundle 'mileszs/ack.vim'
+Bundle 'junegunn/vim-easy-align'
+Bundle 'airblade/vim-gitgutter'
+Bundle 'vim-scripts/csindent.vim'
+
 "========================== config for plugins end ======================================
 
 "==========================================
@@ -762,11 +768,11 @@ endif
 
 
 " 修改主题和颜色展示
-"colorscheme desert
 colorscheme solarized
-set background=dark
 set t_Co=256
+set background=dark
 
+"colorscheme desert
 "colorscheme molokai
 
 "设置标记一列的背景颜色和数字一行颜色一致
