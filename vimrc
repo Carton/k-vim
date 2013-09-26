@@ -331,8 +331,8 @@ let mapleader = ','
 let g:mapleader = ','
 
 " Quickly edit/reload the vimrc file
-" nmap <silent> <leader>ev :e $MYVIMRC<CR>
-" nmap <silent> <leader>sv :so $MYVIMRC<CR>
+nmap <silent> <leader>ev :e $MYVIMRC<CR>
+nmap <silent> <leader>sv :so $MYVIMRC<CR>
 
 "强迫自己用 hjkl
 map <Left> <Nop>
@@ -391,15 +391,14 @@ nnoremap <leader>p :set invpaste<CR>
 nnoremap <leader>n :call RelativeToggle()<cr>
 nnoremap <leader>N :call NumberToggle()<CR>
 
-inoremap kj <Esc>
 " I can type :help on my own, thanks.
-noremap <F1> <Esc>"
+" noremap <F1> <Esc>"
 
 nnoremap ; :
 
 "Use sane regexes"
-nnoremap / /\v
-vnoremap / /\v
+" nnoremap / /\v
+" vnoremap / /\v
 
 "Keep search pattern at the center of the screen."
 nnoremap <silent> n nzz
@@ -650,9 +649,9 @@ Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-repeat'
 
 "自动补全单引号，双引号等
-Bundle 'Raimondi/delimitMate'
+"Bundle 'Raimondi/delimitMate'
 " for python docstring ",优化输入
-au FileType python let b:delimitMate_nesting_quotes = ['"']
+"au FileType python let b:delimitMate_nesting_quotes = ['"']
 
 "for code alignment
 Bundle 'godlygeek/tabular'
