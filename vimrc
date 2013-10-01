@@ -171,7 +171,7 @@ set foldlevel=99
 "Smart indent
 set smartindent
 set autoindent    " always set autoindenting on
-" never add copyindent, case error   " copy the previous indentation on autoindenting
+"set copyindent
 
 set tabstop=4                " 设置Tab键的宽度        [等同的空格个数]
 set shiftwidth=4  " number of spaces to use for autoindenting
@@ -190,12 +190,12 @@ set ttyfast
 
 
 "行号变成相对，可以用 nj  nk   进行跳转 5j   5k 上下跳5行
-set relativenumber
-au FocusLost * :set number
-au FocusGained * :set relativenumber
-" 插入模式下用绝对行号, 普通模式下用相对
-autocmd InsertEnter * :set number
-autocmd InsertLeave * :set relativenumber
+set number
+" au FocusLost * :set number
+" au FocusGained * :set relativenumber
+" " 插入模式下用绝对行号, 普通模式下用相对
+" autocmd InsertEnter * :set number
+" autocmd InsertLeave * :set relativenumber
 function! RelativeToggle()
   if(&relativenumber == 1)
     set number
@@ -210,7 +210,7 @@ function! NumberToggle()
   elseif (&relativenumber == 1)
     set norelativenumber
   else
-    set relativenumber
+    set number
   endif
 
   " if(&number == 1 or &relativenumber == 1)
@@ -388,8 +388,8 @@ noremap <silent><leader>/ :nohls<CR>
 nnoremap <leader>p :set invpaste<CR>
 
 "Line number toggle
-nnoremap <leader>n :call RelativeToggle()<cr>
-nnoremap <leader>N :call NumberToggle()<CR>
+nnoremap <leader>N :call RelativeToggle()<cr>
+nnoremap <leader>n :call NumberToggle()<CR>
 
 " I can type :help on my own, thanks.
 " noremap <F1> <Esc>"
@@ -546,7 +546,8 @@ let g:tagbar_autofocus = 1
 Bundle 'kien/ctrlp.vim'
 let g:ctrlp_map = '<leader>o'
 let g:ctrlp_cmd = 'CtrlP'
-map <leader>f :CtrlPMRU<CR>
+nmap <leader>O :CtrlPClearCache<CR>:CtrlP<CR>
+nmap <leader>f :CtrlPMRU<CR>
 nmap <leader>b :CtrlPBuffer<CR>
 let g:ctrlp_custom_ignore = {
     \ 'dir':  '\v[\/]\.(git|hg|svn|rvm)$',
@@ -741,6 +742,7 @@ Bundle 'mileszs/ack.vim'
 Bundle 'junegunn/vim-easy-align'
 Bundle 'airblade/vim-gitgutter'
 Bundle 'derwiath/csindent.vim'
+Bundle 'msanders/snipmate.vim'
 
 "========================== config for plugins end ======================================
 
