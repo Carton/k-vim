@@ -740,7 +740,7 @@ filetype plugin indent on
 Bundle 'mileszs/ack.vim'
 Bundle 'junegunn/vim-easy-align'
 Bundle 'airblade/vim-gitgutter'
-Bundle 'vim-scripts/csindent.vim'
+Bundle 'derwiath/csindent.vim'
 
 "========================== config for plugins end ======================================
 
