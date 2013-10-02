@@ -504,7 +504,7 @@ let g:miniBufExplorerMoreThanOne=2
 let g:miniBufExplCycleArround=1
 
 " 默认方向键左右可以切换buffer
-nnoremap <TAB> :MBEbn<CR>
+" nnoremap <TAB> :MBEbn<CR>
 " noremap <leader>bn :MBEbn<CR>
 " noremap <leader>bp :MBEbp<CR>
 " noremap <leader>bd :MBEbd<CR>
@@ -634,12 +634,11 @@ let g:ycm_key_list_previous_completion = ['<Up>']
 
 
 "快速插入代码片段
-Bundle 'vim-scripts/UltiSnips'
 Bundle 'SirVer/ultisnips'
 let g:UltiSnipsExpandTrigger = "<tab>"
 let g:UltiSnipsJumpForwardTrigger = "<tab>"
 "定义存放代码片段的文件夹 .vim/snippets下，使用自定义和默认的，将会的到全局，有冲突的会提示
-let g:UltiSnipsSnippetDirectories=["snippets", "bundle/UltiSnips/UltiSnips"]
+let g:UltiSnipsSnippetDirectories=["bundle/vim-snippets/UltiSnips", "snippets" ]
 
 "快速 加减注释
 Bundle 'tpope/vim-commentary'
@@ -742,7 +741,7 @@ Bundle 'mileszs/ack.vim'
 Bundle 'junegunn/vim-easy-align'
 Bundle 'airblade/vim-gitgutter'
 Bundle 'derwiath/csindent.vim'
-Bundle 'msanders/snipmate.vim'
+"Bundle "Carton/vim-snippets"  " Default ultisnips snippets are better
 
 "========================== config for plugins end ======================================
 
