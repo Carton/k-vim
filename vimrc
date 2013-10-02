@@ -653,12 +653,12 @@ Bundle 'tpope/vim-repeat'
 " for python docstring ",优化输入
 "au FileType python let b:delimitMate_nesting_quotes = ['"']
 
-"for code alignment
-Bundle 'godlygeek/tabular'
-nmap <Leader>a= :Tabularize /=<CR>
-vmap <Leader>a= :Tabularize /=<CR>
-nmap <Leader>a: :Tabularize /:\zs<CR>
-vmap <Leader>a: :Tabularize /:\zs<CR>
+"Use easy-align, no need for this
+" Bundle 'godlygeek/tabular'
+" nmap <Leader>a= :Tabularize /=<CR>
+" vmap <Leader>a= :Tabularize /=<CR>
+" nmap <Leader>a: :Tabularize /:\zs<CR>
+" vmap <Leader>a: :Tabularize /:\zs<CR>
 
 "for visual selection
 Bundle 'terryma/vim-expand-region'
@@ -739,6 +739,8 @@ filetype plugin indent on
 " Carton added
 Bundle 'mileszs/ack.vim'
 Bundle 'junegunn/vim-easy-align'
+vnoremap <leader>l :EasyAlign<CR>
+
 Bundle 'airblade/vim-gitgutter'
 Bundle 'derwiath/csindent.vim'
 "Bundle "Carton/vim-snippets"  " Default ultisnips snippets are better
