@@ -78,7 +78,7 @@ endfunction
 autocmd FileType c,cpp,java,python,perl nnoremap <C-]> :call GoDefinition()<CR>
 
 " Auto change to working directory
-autocmd BufEnter * cd %:p:h
+autocm BufEnter * if expand('%:p') !~ '://' | :lchdir %:p:h | endif
 
 " Todo:
 " GoDefinition
@@ -728,6 +728,16 @@ Bundle 'thiderman/nginx-vim-syntax'
 
 " for git 尚未用起来
 Bundle 'tpope/vim-fugitive'
+map <leader>gd :Gdiff<CR>
+map <leader>gb :Gblame<CR>
+map <leader>gc :Gcommit<CR>
+map <leader>gs :Gstatus<CR>
+map <leader>gr :Gremove<CR>
+map <leader>gw :Gwrite<CR>
+map <leader>gn :GitGutterNextHunk<CR>
+map <leader>gp :GitGutterPrevHunk<CR>
+map <down>     :GitGutterNextHunk<CR>
+map <up>       :GitGutterPrevHunk<CR>
 
 "edit history, 可以查看回到某个历史状态
 Bundle 'sjl/gundo.vim'
