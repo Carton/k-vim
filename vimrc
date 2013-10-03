@@ -334,12 +334,6 @@ let g:mapleader = ','
 nmap <silent> <leader>ev :e $MYVIMRC<CR>
 nmap <silent> <leader>sv :so $MYVIMRC<CR>
 
-"强迫自己用 hjkl
-map <Left> <Nop>
-map <Right> <Nop>
-map <Up> <Nop>
-map <Down> <Nop>
-
 "Treat long lines as break lines (useful when moving around in them)
 "se swap之后，同物理行上线直接跳
 map j gj
@@ -504,7 +498,7 @@ let g:miniBufExplorerMoreThanOne=2
 let g:miniBufExplCycleArround=1
 
 " 默认方向键左右可以切换buffer
-" nnoremap <TAB> :MBEbn<CR>
+nnoremap <TAB> :MBEbn<CR>
 " noremap <leader>bn :MBEbn<CR>
 " noremap <leader>bp :MBEbp<CR>
 " noremap <leader>bd :MBEbd<CR>
@@ -726,6 +720,22 @@ Bundle 'thiderman/nginx-vim-syntax'
 "Bundle 'vim-scripts/TaskList.vim'
 "map <leader>td <Plug>TaskList
 
+function! HandleKeyUp()
+    if &diff
+        normal! [c
+    else
+        GitGutterPrevHunk
+    endif
+endfunction
+
+function! HandleKeyDown()
+    if &diff
+        normal! ]c
+    else
+        GitGutterNextHunk
+    endif
+endfunction
+
 " for git 尚未用起来
 Bundle 'tpope/vim-fugitive'
 map <leader>gd :Gdiff<CR>
@@ -734,10 +744,8 @@ map <leader>gc :Gcommit<CR>
 map <leader>gs :Gstatus<CR>
 map <leader>gr :Gremove<CR>
 map <leader>gw :Gwrite<CR>
-map <leader>gn :GitGutterNextHunk<CR>
-map <leader>gp :GitGutterPrevHunk<CR>
-map <down>     :GitGutterNextHunk<CR>
-map <up>       :GitGutterPrevHunk<CR>
+map <down>     :call HandleKeyDown()<CR>
+map <up>       :call HandleKeyUp()<CR>
 
 "edit history, 可以查看回到某个历史状态
 Bundle 'sjl/gundo.vim'
