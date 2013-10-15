@@ -55,6 +55,10 @@ noremap <C-U> :bp<CR>
 inoremap <C-U> <C-O>:bp<CR>
 cnoremap <C-U> <C-C>:bp<CR>
 
+" CTRL-G to show detailed file info
+" Shows full file name in Normal mode
+nnoremap <C-G> 1<C-G>
+
 " Sudo and write to file
 command W :execute ':silent w !sudo tee % > /dev/null' | :edit!
 
@@ -223,7 +227,7 @@ if v:version >= 730
     set undodir=~/bak/vimundo/
 endif
 
-set wildignore=*.swp,*.bak,*.pyc,*.class,*/tmp/*,*.so,*.swp,*.zip,*.o,*~
+set wildignore=*.swp,*.bak,*.pyc,*.class,*.so,*.swp,*.zip,*.o,*~
 
 "显示当前的行号列号：
 set ruler
