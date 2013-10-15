@@ -34,31 +34,26 @@ iab adn and
 noremap <C-D> :bd<CR>
 inoremap <C-D> <C-O>:bd<CR>
 cnoremap <C-D> <C-C>:bd<CR>
-onoremap <C-D> <C-C>:bd<CR>
 
 " Save current buffer
 noremap <C-E> :w<CR>
 inoremap <C-E> <C-O>:w<CR>
 cnoremap <C-E> <C-C>:w<CR>
-onoremap <C-E> <C-C>:w<CR>
 
 " Close window
 noremap <C-X> :q<CR>
 inoremap <C-X> <C-O>:q<CR>
 cnoremap <C-X> <C-C>:q<CR>
-onoremap <C-X> <C-C>:q<CR>
 
 " CTRL-P is switch to Next window, P is on the right
 noremap <C-P> :bn<CR>
 inoremap <C-P> <C-O>:bn<CR>
 cnoremap <C-P> <C-C>:bn<CR>
-onoremap <C-P> <C-C>:bn<CR>
 
 " CTRL-U is switch to Previous windowa, U is on the left
 noremap <C-U> :bp<CR>
 inoremap <C-U> <C-O>:bp<CR>
 cnoremap <C-U> <C-C>:bp<CR>
-onoremap <C-U> <C-C>:bp<CR>
 
 " Sudo and write to file
 command W :execute ':silent w !sudo tee % > /dev/null' | :edit!
@@ -504,7 +499,7 @@ let g:miniBufExplorerMoreThanOne=2
 let g:miniBufExplCycleArround=1
 
 " 默认方向键左右可以切换buffer
-" nnoremap <TAB> :MBEbn<CR>
+nnoremap <TAB> :MBEbn<CR>
 " noremap <leader>bn :MBEbn<CR>
 " noremap <leader>bp :MBEbp<CR>
 " noremap <leader>bd :MBEbd<CR>
