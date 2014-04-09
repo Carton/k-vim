@@ -336,8 +336,6 @@ nmap <silent> <leader>sv :so $MYVIMRC<CR>
 "强迫自己用 hjkl
 map <Left> <Nop>
 map <Right> <Nop>
-map <Up> <Nop>
-map <Down> <Nop>
 
 "Treat long lines as break lines (useful when moving around in them)
 "se swap之后，同物理行上线直接跳
@@ -385,6 +383,9 @@ noremap <silent><leader>/ :nohls<CR>
 
 " Redefine pastetoggle key
 nnoremap <leader>p :set invpaste<CR>
+
+" Maps for toggling wrap state
+nnoremap <leader>w :set invwrap<CR>
 
 "Line number toggle
 nnoremap <leader>N :call RelativeToggle()<cr>
