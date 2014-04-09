@@ -34,31 +34,30 @@ iab adn and
 noremap <C-D> :bd<CR>
 inoremap <C-D> <C-O>:bd<CR>
 cnoremap <C-D> <C-C>:bd<CR>
-onoremap <C-D> <C-C>:bd<CR>
 
 " Save current buffer
 noremap <C-E> :w<CR>
 inoremap <C-E> <C-O>:w<CR>
 cnoremap <C-E> <C-C>:w<CR>
-onoremap <C-E> <C-C>:w<CR>
 
 " Close window
 noremap <C-X> :q<CR>
 inoremap <C-X> <C-O>:q<CR>
 cnoremap <C-X> <C-C>:q<CR>
-onoremap <C-X> <C-C>:q<CR>
 
 " CTRL-P is switch to Next window, P is on the right
 noremap <C-P> :bn<CR>
 inoremap <C-P> <C-O>:bn<CR>
 cnoremap <C-P> <C-C>:bn<CR>
-onoremap <C-P> <C-C>:bn<CR>
 
 " CTRL-U is switch to Previous windowa, U is on the left
 noremap <C-U> :bp<CR>
 inoremap <C-U> <C-O>:bp<CR>
 cnoremap <C-U> <C-C>:bp<CR>
-onoremap <C-U> <C-C>:bp<CR>
+
+" CTRL-G to show detailed file info
+" Shows full file name in Normal mode
+nnoremap <C-G> 1<C-G>
 
 " Sudo and write to file
 command W :execute ':silent w !sudo tee % > /dev/null' | :edit!
@@ -228,7 +227,7 @@ if v:version >= 730
     set undodir=~/bak/vimundo/
 endif
 
-set wildignore=*.swp,*.bak,*.pyc,*.class,*/tmp/*,*.so,*.swp,*.zip,*.o,*~
+set wildignore=*.swp,*.bak,*.pyc,*.class,*.so,*.swp,*.zip,*.o,*~
 
 "显示当前的行号列号：
 set ruler
@@ -334,6 +333,10 @@ let g:mapleader = ','
 nmap <silent> <leader>ev :e $MYVIMRC<CR>
 nmap <silent> <leader>sv :so $MYVIMRC<CR>
 
+"强迫自己用 hjkl
+map <Left> <Nop>
+map <Right> <Nop>
+
 "Treat long lines as break lines (useful when moving around in them)
 "se swap之后，同物理行上线直接跳
 map j gj
@@ -380,6 +383,9 @@ noremap <silent><leader>/ :nohls<CR>
 
 " Redefine pastetoggle key
 nnoremap <leader>p :set invpaste<CR>
+
+" Maps for toggling wrap state
+nnoremap <leader>w :set invwrap<CR>
 
 "Line number toggle
 nnoremap <leader>N :call RelativeToggle()<cr>
