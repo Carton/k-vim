@@ -333,10 +333,6 @@ let g:mapleader = ','
 nmap <silent> <leader>ev :e $MYVIMRC<CR>
 nmap <silent> <leader>sv :so $MYVIMRC<CR>
 
-"强迫自己用 hjkl
-map <Left> <Nop>
-map <Right> <Nop>
-
 "Treat long lines as break lines (useful when moving around in them)
 "se swap之后，同物理行上线直接跳
 map j gj
@@ -406,10 +402,6 @@ nnoremap <silent> N Nzz
 nnoremap <silent> * *zz
 nnoremap <silent> # #zz
 nnoremap <silent> g* g*zz
-
-"Use arrow key to change buffer"
-noremap <left> :bp<CR>
-noremap <right> :bn<CR>
 
 ""Jump to start and end of line using the home row keys
 ""
@@ -742,6 +734,24 @@ function! HandleKeyDown()
     endif
 endfunction
 
+function! CurLin()
+    if v:version >= 700 | setlocal cursorline
+    else | normal! zz
+    endif
+endfun
+
+function! HandleKeyLeft()
+    try | cp
+    catch | cfirst
+    endtry | call CurLin()
+endfun
+
+function! HandleKeyRight()
+    try | cn
+    catch | clast
+    endtry | call CurLin()
+endfun
+
 " for git 尚未用起来
 Bundle 'tpope/vim-fugitive'
 map <leader>gd :Gdiff<CR>
@@ -750,8 +760,12 @@ map <leader>gc :Gcommit<CR>
 map <leader>gs :Gstatus<CR>
 map <leader>gr :Gremove<CR>
 map <leader>gw :Gwrite<CR>
-map <down>     :call HandleKeyDown()<CR>
+
+" Remap arrow keys for special function
 map <up>       :call HandleKeyUp()<CR>
+map <down>     :call HandleKeyDown()<CR>
+map <left>     :call HandleKeyLeft()<CR>
+map <right>    :call HandleKeyRight()<CR>
 
 "edit history, 可以查看回到某个历史状态
 Bundle 'sjl/gundo.vim'
