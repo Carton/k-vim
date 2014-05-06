@@ -436,6 +436,21 @@ map <Leader>sa ggVG"
 " automatically reload vimrc when it's saved
 au BufWritePost .vimrc so ~/.vimrc
 
+function! ToggleExpandTab()
+    set expandtab! expandtab?
+endfunc
+
+function! SetTabSize(size)
+    exec 'set tabstop='.a:size
+    exec 'set shiftwidth='.a:size
+    exec 'set softtabstop='.a:size
+endfunc
+
+map <leader>ts :call ToggleExpandTab()<cr>
+map <leader>t2 :call SetTabSize(2)<cr>
+map <leader>t4 :call SetTabSize(4)<cr>
+map <leader>t8 :call SetTabSize(8)<cr>
+
 " Close the current buffer
 "map <leader>bd :Bclose<cr>
 "" " Close all the buffers
@@ -654,7 +669,7 @@ Bundle 'tpope/vim-repeat'
 
 "for visual selection
 Bundle 'terryma/vim-expand-region'
-map = <Plug>(expand_region_expand)
+map + <Plug>(expand_region_expand)
 map - <Plug>(expand_region_shrink)
 
 "for mutil cursor
