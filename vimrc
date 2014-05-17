@@ -190,8 +190,8 @@ set ttyfast
 
 "行号变成相对，可以用 nj  nk   进行跳转 5j   5k 上下跳5行
 set number
-" au FocusLost * :set number
-" au FocusGained * :set relativenumber
+" autocmd FocusLost * :set number
+" autocmd FocusGained * :set relativenumber
 " " 插入模式下用绝对行号, 普通模式下用相对
 " autocmd InsertEnter * :set number
 " autocmd InsertLeave * :set relativenumber
@@ -273,8 +273,8 @@ set formatoptions+=B
 "==========================================
 " others 其它配置
 "==========================================
-autocmd! bufwritepost _vimrc source % " vimrc文件修改之后自动加载。 windows。
-autocmd! bufwritepost .vimrc source % " vimrc文件修改之后自动加载。 linux。
+autocmd! BufWritePost _vimrc source % " vimrc文件修改之后自动加载。 windows。
+autocmd! BufWritePost .vimrc source % " vimrc文件修改之后自动加载。 linux。
 
 " 自动补全配置
 "让Vim的补全菜单行为与一般IDE一致(参考VimTip1228)
@@ -296,13 +296,8 @@ inoremap <expr> <PageUp>   pumvisible() ? "\<PageUp>\<C-p>\<C-n>" : "\<PageUp>"
 set wildmenu
 " Ignore compiled files
 
-" Python 文件的一般设置，比如不要 tab 等
-autocmd FileType python set tabstop=4 shiftwidth=4 expandtab ai
-
 " if this not work ,make sure .viminfo is writable for you
-if has("autocmd")
-  au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
-endif
+autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
 "删除多余空格
 " Delete trailing white space on save, useful for Python and CoffeeScript ;)
@@ -369,7 +364,7 @@ map 0 ^
                                 "    that won't be autoindented
 
 " disbale paste mode when leaving insert mode
-au InsertLeave * set nopaste
+autocmd InsertLeave * set nopaste
 
 "nnoremap <F6> :exec exists('syntax_on') ? 'syn off' : 'syn on'<CR>
 
@@ -428,13 +423,10 @@ nnoremap ` '
 "nnoremap <silent> <leader>d "_d
 "vnoremap <silent> <leader>d "_d
 
-"au VimResized * exe "normal! \<c-w>=""
+"autocmd VimResized * exe "normal! \<c-w>=""
 
 " select all
-map <Leader>sa ggVG"
-
-" automatically reload vimrc when it's saved
-au BufWritePost .vimrc so ~/.vimrc
+map <leader>sa ggVG"
 
 function! ToggleExpandTab()
     set expandtab! expandtab?
@@ -658,14 +650,14 @@ Bundle 'tpope/vim-repeat'
 "自动补全单引号，双引号等
 "Bundle 'Raimondi/delimitMate'
 " for python docstring ",优化输入
-"au FileType python let b:delimitMate_nesting_quotes = ['"']
+"autocmd FileType python let b:delimitMate_nesting_quotes = ['"']
 
 "Use easy-align, no need for this
 " Bundle 'godlygeek/tabular'
-" nmap <Leader>a= :Tabularize /=<CR>
-" vmap <Leader>a= :Tabularize /=<CR>
-" nmap <Leader>a: :Tabularize /:\zs<CR>
-" vmap <Leader>a: :Tabularize /:\zs<CR>
+" nmap <leader>a= :Tabularize /=<CR>
+" vmap <leader>a= :Tabularize /=<CR>
+" nmap <leader>a: :Tabularize /:\zs<CR>
+" vmap <leader>a: :Tabularize /:\zs<CR>
 
 "for visual selection
 Bundle 'terryma/vim-expand-region'
@@ -846,8 +838,8 @@ highlight clear SpellLocal
 highlight SpellLocal term=underline cterm=underline
 
 " settings for kien/rainbow_parentheses.vim
-au VimEnter * RainbowParenthesesToggle
-au Syntax * RainbowParenthesesLoadRound
-au Syntax * RainbowParenthesesLoadSquare
-au Syntax * RainbowParenthesesLoadBraces
+autocmd VimEnter * RainbowParenthesesToggle
+autocmd Syntax * RainbowParenthesesLoadRound
+autocmd Syntax * RainbowParenthesesLoadSquare
+autocmd Syntax * RainbowParenthesesLoadBraces
 
