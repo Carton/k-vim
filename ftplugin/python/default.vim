@@ -6,4 +6,5 @@ setlocal textwidth=100
 setlocal smarttab
 setlocal expandtab
 
+"setlocal autoindent
 setlocal smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class
