@@ -77,7 +77,7 @@ endfunction
 autocmd FileType c,cpp,java,python,perl nnoremap <C-]> :call GoDefinition()<CR>
 
 " Auto change to working directory
-autocm BufEnter * if expand('%:p') !~ '://' | :lchdir %:p:h | endif
+autocmd BufEnter * if expand('%:p') !~ '://' | :lchdir %:p:h | endif
 
 " Todo:
 " GoDefinition
@@ -246,6 +246,7 @@ set statusline=%<%f\ %h%m%r%=%k[%{(&fenc==\"\")?&enc:&fenc}%{(&bomb?\",BOM\":\"\
 " Always show the status line
 set laststatus=2
 
+" Vimscript file settings ---------------------- {{{
 "==========================================
 " file encode, 文件编码,格式
 "==========================================
@@ -302,11 +303,11 @@ autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "norm
 "删除多余空格
 " Delete trailing white space on save, useful for Python and CoffeeScript ;)
 func! DeleteTrailingWS()
-  exe "normal mz"
+  exe "normal! mz"
   %s/\s\+$//ge
-  exe "normal `z"
+  exe "normal! `z"
 endfunc
-autocmd BufWrite *.py :call DeleteTrailingWS()
+"autocmd BufWrite *.py :call DeleteTrailingWS()
 
 " Remember info about open buffers on close"
 set viminfo^=%
