@@ -42,6 +42,9 @@ onoremap ah :<c-u>execute "normal! ?^==\\+$\r:nohlsearch\rg_vk0"<cr>
 onoremap iH :<c-u>execute "normal! ?^--\\+$\r:nohlsearch\rkvg_"<cr>
 onoremap aH :<c-u>execute "normal! ?^--\\+$\r:nohlsearch\rg_vk0"<cr>
 
+"Snippets
+":execute "normal! gg/print\<cr>"
+
 augroup filetype_vim
     autocmd!
     autocmd FileType vim setlocal foldmethod=marker

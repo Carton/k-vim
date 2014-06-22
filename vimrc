@@ -69,7 +69,7 @@ function! GoDefinition()
     let pos = getpos(".")
     normal! gd
     if getpos(".") == pos
-        exe "tag " . expand("<cword>")
+        execute "tag " . expand("<cword>")
     endif
 endfunction
 
@@ -298,14 +298,14 @@ set wildmenu
 " Ignore compiled files
 
 " if this not work ,make sure .viminfo is writable for you
-autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | execute "normal! g'\"" | endif
 
 "删除多余空格
 " Delete trailing white space on save, useful for Python and CoffeeScript ;)
 func! DeleteTrailingWS()
-  exe "normal! mz"
+  execute "normal! mz"
   %s/\s\+$//ge
-  exe "normal! `z"
+  execute "normal! `z"
 endfunc
 "autocmd BufWrite *.py :call DeleteTrailingWS()
 
@@ -367,7 +367,7 @@ map 0 ^
 " disbale paste mode when leaving insert mode
 autocmd InsertLeave * set nopaste
 
-"nnoremap <F6> :exec exists('syntax_on') ? 'syn off' : 'syn on'<CR>
+"nnoremap <F6> :execute exists('syntax_on') ? 'syn off' : 'syn on'<CR>
 
 map Y y$
 " Cancel search highlight key
@@ -424,7 +424,7 @@ nnoremap ` '
 "nnoremap <silent> <leader>d "_d
 "vnoremap <silent> <leader>d "_d
 
-"autocmd VimResized * exe "normal! \<c-w>=""
+"autocmd VimResized * execute "normal! \<c-w>=""
 
 " select all
 map <leader>sa ggVG"
@@ -434,9 +434,9 @@ function! ToggleExpandTab()
 endfunc
 
 function! SetTabSize(size)
-    exec 'set tabstop='.a:size
-    exec 'set shiftwidth='.a:size
-    exec 'set softtabstop='.a:size
+    execute 'set tabstop='.a:size
+    execute 'set shiftwidth='.a:size
+    execute 'set softtabstop='.a:size
 endfunc
 
 map <leader>ts :call ToggleExpandTab()<cr>
