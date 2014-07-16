@@ -26,4 +26,4 @@ function! HighlightLogcat()
 	hi def link LogV LogV_color
 endfunction
 
-autocmd BufRead *.log,*.txt call HighlightLogcat() 
+autocmd BufRead *.log,*.txt call HighlightLogcat()

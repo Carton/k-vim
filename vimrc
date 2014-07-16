@@ -719,7 +719,7 @@ Bundle 'nono/jquery.vim'
 Bundle 'Glench/Vim-Jinja2-Syntax'
 
 "for nginx conf file highlight.   need to confirm it works
-Bundle 'thiderman/nginx-vim-syntax'
+Bundle 'evanmiller/nginx-vim-syntax'
 
 "################### 其他 ###################"
 " task list
@@ -788,6 +788,7 @@ Bundle 'junegunn/vim-easy-align'
 vnoremap <leader>l :EasyAlign<CR>
 
 Bundle 'airblade/vim-gitgutter'
+Bundle 'vim-scripts/valgrind.vim'
 Bundle 'derwiath/csindent.vim'
 "Bundle "Carton/vim-snippets"  " Default ultisnips snippets are better
 
