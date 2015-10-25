@@ -46,12 +46,12 @@ echo "if error,you need to compile it yourself"
 #bash -x install.sh --clang-completer
 
 #vim bk and undo dir
-if [ ! -d ~/bak/vimbk ]
+if [ ! -d ~/backup/vimbk ]
 then
-    mkdir -p ~/bak/vimbk
+    mkdir -p ~/backup/vimbk
 fi
 
-if [ ! -d ~/bak/vimundo ]
+if [ ! -d ~/backup/vimundo ]
 then
-    mkdir -p ~/bak/vimundo
+    mkdir -p ~/backup/vimundo
 fi
