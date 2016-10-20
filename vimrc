@@ -768,6 +768,7 @@ map <leader>gc :Gcommit<CR>
 map <leader>gs :Gstatus<CR>
 map <leader>gr :Gremove<CR>
 map <leader>gw :Gwrite<CR>
+nnoremap <leader>c "zyiw<C-W>h:Gedit <C-R>z<CR><C-W>l
 
 " Remap arrow keys for special function
 map <up>       :call HandleKeyUp()<CR>
