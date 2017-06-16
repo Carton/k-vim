@@ -783,7 +783,7 @@ nnoremap <leader>h :GundoToggle<CR>
 " end turn on
 filetype plugin indent on
 
-" Carton added
+"========================= Carton added start =====================================
 Bundle 'mileszs/ack.vim'
 Bundle 'junegunn/vim-easy-align'
 vnoremap <leader>l :EasyAlign<CR>
@@ -792,6 +792,13 @@ Bundle 'airblade/vim-gitgutter'
 Bundle 'vim-scripts/valgrind.vim'
 Bundle 'derwiath/csindent.vim'
 "Bundle "Carton/vim-snippets"  " Default ultisnips snippets are better
+
+"Linux kernel style
+Bundle 'vivien/vim-linux-coding-style'
+let g:linuxsty_patterns = [ "/usr/src/", "/linux", "kernel/" ]
+nnoremap <silent> <leader>a :LinuxCodingStyle<CR>
+
+"========================= Carton added end =====================================
 
 "========================== config for plugins end ======================================
 
