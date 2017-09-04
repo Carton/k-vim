@@ -345,8 +345,8 @@ map <C-h> <C-W>h
 map <C-l> <C-W>l
 
 " Go to home and end using capitalized directions
-noremap H 0
-noremap L $
+"noremap H 0
+"noremap L $
 
 " Remap VIM 0 to first non-blank character
 map 0 ^
@@ -386,7 +386,7 @@ nnoremap <leader>n :call NumberToggle()<CR>
 " I can type :help on my own, thanks.
 " noremap <F1> <Esc>"
 
-nnoremap ; :
+"nnoremap ; :
 
 "Use sane regexes"
 " nnoremap / /\v
@@ -401,8 +401,8 @@ nnoremap <silent> g* g*zz
 
 ""Jump to start and end of line using the home row keys
 ""
-nmap t o<ESC>k
-nmap T O<ESC>j
+"nmap t o<ESC>k
+"nmap T O<ESC>j
 
 " ctrl +jk to move lines   经常敲错换错行...一致没想好配哪个映射
 "noremap <C-k> :m+<CR>
@@ -700,7 +700,7 @@ Bundle 'hdima/python-syntax'
 let python_highlight_all = 1
 
 " for golang
-Bundle 'jnwhiteh/vim-golang'
+Bundle 'fatih/vim-go'
 
 " for markdown
 Bundle 'plasticboy/vim-markdown'
