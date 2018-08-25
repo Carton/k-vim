@@ -1,7 +1,23 @@
 " Need my modified sgrepin script to sgrep in specified folder
-set grepprg=sgrepin
+"set grepprg=sgrepin
 
-nmap <leader>s :grep . <C-R>=expand("<cword>")<CR><CR>
+"nmap <leader>s :grep . <C-R>=expand("<cword>")<CR><CR>
+":nnoremap <leader>g :silent execute "grep! -R " . shellescape(expand("<cWORD>")) . " ."<cr>:copen<cr>
+nnoremap <leader>g :set operatorfunc=GrepOperator<cr>g@
+vnoremap <leader>g :<c-u>call GrepOperator(visualmode())<cr>
+
+function! GrepOperator(type)
+    if a:type ==# 'v'
+        execute "normal! `<v`>y"
+    elseif a:type ==# 'char'
+        execute "normal! `[v`]y"
+    else
+        return
+    endif
+
+    silent execute "grep! -R " . shellescape(@@) . " ."
+    copen
+endfunction
 
 " Need amm script: a wrapper for Android `mm' command, which can also handle
 " normal Makefiles

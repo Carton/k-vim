@@ -223,7 +223,7 @@ endfunc
 set undolevels=1000         " How many undos
 set undoreload=10000        " number of lines to save for undo
 if v:version >= 730
-    set undofile                " keep a persistent backup file
+    set undofile                " keep a persistent backup file
     set undodir=~/bak/vimundo/
 endif
 
